@@ -44,9 +44,8 @@ public class Sketch : MonoBehaviour {
             float y = town.Latitude;
             float z = town.Altitude;
             
-            string symbol = town.Symbol;
-
-            if (symbol == "Cube")
+           
+            if (town.Symbol == "Cube")
             {
                 var newCube = (GameObject)Instantiate(Cube, new Vector3(x, y, z), Quaternion.identity);
 
@@ -54,16 +53,16 @@ public class Sketch : MonoBehaviour {
                 //(.45f * (1.0f - perc));
                 //newCube.GetComponent<CubeScript>().rotateSpeed = .2f + perc * 4.0f;
                 newCube.transform.Find("New Text").GetComponent<TextMesh>().text = town.TownName;
-
-
+                newCube.GetComponent<Renderer>().material.color = new Color(1, 0, 0, 1);
             }
 
-            if (symbol == "Sphere")
+            if (town.Symbol == "Sphere")
             {
                 var newSphere = (GameObject)Instantiate(Sphere, new Vector3(x, y, z), Quaternion.identity);
 
                 newSphere.GetComponent<SphereScript>().SetSize(town.Size);
                 newSphere.transform.Find("New Text").GetComponent<TextMesh>().text = town.TownName;
+                newSphere.GetComponent<Renderer>().material.color = new Color(0, 0, 1, 1);
             }
           
             i++;
